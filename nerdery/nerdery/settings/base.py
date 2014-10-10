@@ -95,6 +95,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Authentication
-SITE_URL = get_environment_variable('DJANGO_SITE_URL')
+# SITE_URL = get_environment_variable('DJANGO_SITE_URL')
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django_browserid.auth.BrowserIDBackend',
+)
 LOGIN_REDIRECT_URL = '/'
 BROWSERID_CREATE_USER = True
