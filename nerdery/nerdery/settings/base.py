@@ -10,6 +10,17 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
+from django.core.exceptions import ImproperlyConfigured
+
+def get_environment_variable(name):
+    try:
+        return os.environ[name]
+    except KeyError:
+        error_message = 'Set the {} environment variable'.format(name)
+        raise ImproperlyConfigured(error_message)
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -17,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pqdk8j(p3iin-x^9ekstf$+2u1k=$5fw&my#31q&hob#n)0m&m'
+SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,3 +92,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Authentication
+SITE_URL = get_env_variable('DJANGO_SITE_URL')
+LOGIN_REDIRECT_URL = '/'
+BROWSERID_CREATE_USER = True
