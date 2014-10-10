@@ -2,29 +2,37 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import unittest
 
+
 class NewSignupTest(unittest.TestCase):
 
     def setUp(self):
-        self.browser.implicitly_wait(3)
         self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
 
     def test_can_register_unfamiliar_child_to_nerdery_server(self):
         # Lauren would like to register her daughter, Sarah, for nerdery kids.
-        # She visits the homepage and looks for an appropriate link for nerdery
-        # kids / minecraft servers.
+        # She visits the homepage.
         self.browser.get('http://localhost:8000')
         try:
-            nerdery_kids_link = self.browser.find_element_by_id(
+            self.browser.find_element_by_id(
+                'front_page')
+        except NoSuchElementException:
+            self.fail('front page was not found')
+
+        self.fail('Finish the test.')
+
+        # She looks for an appropriate link for nerdery servers
+        try:
+            self.browser.find_element_by_id(
                 'nerdery_kids_link')
         except NoSuchElementException:
             self.fail('nerdery_kids_link not found')
 
         # She is taken to a page that shows what our servers are running and
         # displays a small map of each.
-        self.fail('Finish the test.')
 
         # At the top is a sign-up button which she clicks on.
 
@@ -45,8 +53,9 @@ class NewSignupTest(unittest.TestCase):
         #     crafter4000
         #     01/01/2005
         #
-        # She is told that crafter4000 has not been to a nerdery course before,
-        # so we'll need a bit more information, but we'll show her instructions 
+        # She is told that crafter4000 has not been to a nerdery course
+        # before, so we'll need a bit more information, but we'll show
+        # her instructions
         #
         # She is taken to a payment page and presented with a form which she
         # fills in.
@@ -66,8 +75,8 @@ class NewSignupTest(unittest.TestCase):
         # She is not logged in, so she is presented with the sign up form.
         # She clicks the "sign in" link
         #
-        # She is presented with a sign in form. She fills it in and clicks "Sign
-        # in"
+        # She is presented with a sign in form. She fills it in and
+        # clicks "Sign in"
         #
         # She is taken to the "Who are you signing up" page
         #
@@ -76,7 +85,8 @@ class NewSignupTest(unittest.TestCase):
         #     crafter3000
         #     01/01/2007
         #
-        # crafter3000 has been to a course before, so gets approved immediately.
+        # crafter3000 has been to a course before, so gets approved
+        # immediately.
         #
         # She is taken to the payment form and fills it in.
         #
