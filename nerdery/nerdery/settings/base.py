@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
+SECRET_KEY = get_environment_variable('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'django_browserid',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -94,6 +95,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Authentication
-SITE_URL = get_env_variable('DJANGO_SITE_URL')
+SITE_URL = get_environment_variable('DJANGO_SITE_URL')
 LOGIN_REDIRECT_URL = '/'
 BROWSERID_CREATE_USER = True
