@@ -22,14 +22,15 @@ class NewSignupTest(unittest.TestCase):
         except NoSuchElementException:
             self.fail('front page was not found')
 
-        self.fail('Finish the test.')
-
         # She looks for an appropriate link for nerdery servers
         try:
-            self.browser.find_element_by_id(
+            nerdery_kids_link = self.browser.find_element_by_id(
                 'nerdery_kids_link')
         except NoSuchElementException:
             self.fail('nerdery_kids_link not found')
+
+        # She clicks on the link
+        nerdery_kids_link.click()
 
         # She is taken to a page that shows what our servers are running and
         # displays a small map of each.
@@ -93,6 +94,8 @@ class NewSignupTest(unittest.TestCase):
         # She is told that the payment has been accepted and that crafter3000
         # has been approved. She clicks on a link to instructions on how to
         # install technic
+
+        self.fail('Finish the test.')
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
