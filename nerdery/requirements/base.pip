@@ -1,0 +1,7 @@
+# Third party applications required for any installation of nerdery.
+#
+
+Django==1.7
+django-browserid==0.11
+fancy-tag==0.2.0
+requests==2.4.3

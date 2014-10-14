@@ -1,0 +1,6 @@
+# Requirements for automated testing
+
+# Include the base.pip requirements file
+-r base.pip
+
+selenium==2.43.0
