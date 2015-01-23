@@ -13,6 +13,7 @@ import os
 
 from django.core.exceptions import ImproperlyConfigured
 
+
 def get_environment_variable(name):
     try:
         return os.environ[name]
@@ -47,7 +48,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django_browserid',
+    # 'django_browserid',
+    'nerdery_servers',
 )
 
 MIDDLEWARE_CLASSES = (
